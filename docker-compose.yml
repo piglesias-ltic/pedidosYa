@@ -1,0 +1,31 @@
+version: '3'
+services:
+  postgres:
+    build: ./database
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=main
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - 5432:5432
+
+  service:
+    build: ./service
+    container_name: service
+    environment:
+      - APP_PORT=8080
+      - DB_USER=postgres
+      - DB_PWD=secret
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=main
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
