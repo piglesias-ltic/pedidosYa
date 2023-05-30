@@ -17,5 +17,8 @@ func SetupRouter() *gin.Engine {
 	// Health check
 	r.GET("/health", healthCheckHandler)
 
+	// Create review
+	r.POST("/review", createReviewHandler)
+
 	return r
 }

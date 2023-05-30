@@ -13,3 +13,11 @@ func ProvideHealthCheckUsecaseImpl(r repos.HealthCheckRepo) *usecases.HealthChec
 func ProvideHealthCheckDBRepo() *infra.HealthCheckDBRepo {
 	return &infra.HealthCheckDBRepo{}
 }
+
+func ProvideCreateReviewUsecaseImpl(r repos.ReviewRepo) *usecases.CreateReviewUsecaseImpl {
+	return &usecases.CreateReviewUsecaseImpl{ReviewRepo: r}
+}
+
+func ProvideCreateReviewDBRepo() *infra.ReviewDBRepo {
+	return &infra.ReviewDBRepo{}
+}
